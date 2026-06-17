@@ -1,14 +1,14 @@
-# PassPhraser 🔐
+# PySecure 🔐
 
 <div align="center">
 
-![Python](https://img.shields.io/badge/Python-3.10.5-blue?style=for-the-badge&logo=python&logoColor=white)
-![Pyglet](https://img.shields.io/badge/Pyglet-1.5.26-green?style=for-the-badge)
-![License](https://img.shields.io/badge/License-Open_Source-orange?style=for-the-badge)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Security](https://img.shields.io/badge/Security-Focused-red?style=for-the-badge)
+![Stars](https://img.shields.io/github/stars/Dilsan15/PySecure?style=for-the-badge)
 
-**A lightweight, readable password generator that creates secure passphrases using real words**
+**A Python-based security management application with GUI interface**
 
-[Features](#features) • [Demo](#demo) • [Installation](#installation) • [Usage](#usage) • [How It Works](#how-it-works)
+[Features](#features) • [Installation](#installation) • [Architecture](#architecture) • [Usage](#usage)
 
 </div>
 
@@ -16,54 +16,76 @@
 
 ## 📖 Overview
 
-PassPhraser is a readable password generator that creates secure, memorable passwords by combining real words instead of random characters. Perfect for users who want strong passwords that are actually possible to remember!
+PySecure is a Python security management application built with a clean MVC (Model-View-Controller) architecture. The project provides a graphical user interface for managing security-related tasks and demonstrates professional software engineering practices.
 
-### Why PassPhraser?
+### Key Highlights
 
-Traditional password generators create passwords like: `h7$mK9#pL2@qR`  
-PassPhraser creates passwords like: `Correct-Horse-Battery-Staple`
-
-**Benefits:**
-- ✅ Easier to remember
-- ✅ Just as secure (with sufficient length)
-- ✅ Reduces password writing/storage needs
-- ✅ Customizable length and special characters
+- 🏗️ **MVC Architecture**: Clean separation of concerns with Models, Views, and Controllers
+- 🖥️ **GUI Interface**: User-friendly graphical interface for security operations
+- 🐍 **Pure Python**: Built entirely with Python for cross-platform compatibility
+- 🔧 **Modular Design**: Extensible codebase for easy feature additions
 
 ---
 
 ## ✨ Features
 
-- **Readable Passwords**: Uses real words from a dictionary API
-- **Customizable Length**: Choose how many words to include
-- **Special Character Options**: Add numbers and symbols for extra security
-- **User-Friendly GUI**: Simple Pyglet-based interface
-- **Input Validation**: Error checking with helpful feedback
-- **Easy Copying**: One-click copy to clipboard
-- **Lightweight**: Minimal dependencies, fast performance
-- **Free & Open Source**: Use anywhere, modify as needed
+### Core Functionality
+
+- **Security Management**: Handle security-related operations through an intuitive interface
+- **Data Modeling**: Structured data models for security entities
+- **Controller Logic**: Centralized business logic in controller classes
+- **GUI Components**: Pre-built interface elements for common security tasks
+
+### Architecture Benefits
+
+- Clean separation between business logic and presentation
+- Easy to test individual components
+- Scalable for future feature additions
+- Maintainable codebase following best practices
 
 ---
 
-## 🖼️ Demo
+## 🏗️ Architecture
+
+PySecure follows the Model-View-Controller (MVC) design pattern:
 
 ```
-┌─────────────────────────────────────┐
-│        PassPhraser Generator        │
-├─────────────────────────────────────┤
-│                                     │
-│  Password Length: [  4  ]           │
-│  Include Numbers:  ☑                │
-│  Include Symbols:  ☑                │
-│                                     │
-│  [ Generate Password ]              │
-│                                     │
-│  ┌─────────────────────────────┐   │
-│  │ Sunset-Mountain-River-42!   │   │
-│  └─────────────────────────────┘   │
-│                                     │
-│  [ Copy to Clipboard ]              │
-│                                     │
-└─────────────────────────────────────┘
+┌─────────────────────────────────────────┐
+│            PySecure App                 │
+│                                         │
+│  ┌──────────┐      ┌──────────┐       │
+│  │   GUI    │◄─────┤ main.py  │       │
+│  │ (Views)  │      │  (Entry) │       │
+│  └────┬─────┘      └──────────┘       │
+│       │                                 │
+│       │ User Actions                    │
+│       ▼                                 │
+│  ┌────────────┐                        │
+│  │Controllers │                        │
+│  │  (Logic)   │                        │
+│  └─────┬──────┘                        │
+│        │                                │
+│        │ Data Operations                │
+│        ▼                                │
+│  ┌──────────┐                          │
+│  │  Models  │                          │
+│  │  (Data)  │                          │
+│  └──────────┘                          │
+└─────────────────────────────────────────┘
+```
+
+### Directory Structure
+
+```
+PySecure/
+├── .idea/              # IDE configuration (PyCharm)
+├── Controllers/        # Business logic layer
+│   └── [Controller classes handle user actions]
+├── GUI/                # View layer (User Interface)
+│   └── [GUI components and windows]
+├── Models/             # Data layer
+│   └── [Data models and schemas]
+└── main.py            # Application entry point
 ```
 
 ---
@@ -72,241 +94,257 @@ PassPhraser creates passwords like: `Correct-Horse-Battery-Staple`
 
 ### Prerequisites
 
-- Python 3.10.5 or higher
+- Python 3.7 or higher
 - pip (Python package manager)
+- Git
 
-### Setup
+### Quick Start
 
 1. **Clone the repository**:
 ```bash
-git clone https://github.com/Dilsan15/PassPhraser.git
-cd PassPhraser
+git clone https://github.com/Dilsan15/PySecure.git
+cd PySecure
 ```
 
-2. **Install dependencies**:
+2. **Create a virtual environment** (recommended):
+```bash
+# Windows
+python -m venv venv
+venv\Scripts\activate
+
+# macOS/Linux
+python3 -m venv venv
+source venv/bin/activate
+```
+
+3. **Install dependencies**:
 ```bash
 pip install -r requirements.txt
 ```
 
-Or manually install:
+4. **Run the application**:
 ```bash
-pip install pyglet==1.5.26
-pip install requests
-```
-
-3. **Run the application**:
-```bash
-python src/gen_main_app.py
+python main.py
 ```
 
 ---
 
-## 🎯 Usage
+## 💻 Usage
 
-### Basic Usage
-
-1. Launch the application
-2. Enter desired password length (number of words)
-3. Select options for numbers and special characters
-4. Click "Generate Password"
-5. Copy the generated password
-
-### Command Line (if supported)
+### Running the Application
 
 ```bash
-python src/gen_main_app.py --length 4 --numbers --symbols
+# From the project root directory
+python main.py
 ```
 
-### API Usage
+### Basic Workflow
 
-The generator uses a word API to fetch random words. No API key required for basic usage!
+1. Launch the application using `main.py`
+2. The GUI window will appear with available options
+3. Interact with security management features through the interface
+4. Controller logic processes your actions
+5. Models handle data persistence and retrieval
 
 ---
 
-## 💡 How It Works
+## 🔧 Development
 
-### Password Generation Pipeline
+### Project Structure Explained
 
-```
-┌──────────────┐
-│ User Input   │
-│ - Length     │
-│ - Options    │
-└──────┬───────┘
-       │
-       ▼
-┌──────────────┐
-│ Input        │
-│ Validation   │
-│ (gen_error)  │
-└──────┬───────┘
-       │
-       ▼
-┌──────────────┐
-│ API Request  │
-│ Fetch Words  │
-│ (gen_api)    │
-└──────┬───────┘
-       │
-       ▼
-┌──────────────┐
-│ Password     │
-│ Assembly     │
-│ (gen_creation)│
-└──────┬───────┘
-       │
-       ▼
-┌──────────────┐
-│ Display      │
-│ Output       │
-│ (main_app)   │
-└──────────────┘
-```
+#### **main.py**
+The entry point of the application:
+- Initializes the application
+- Sets up the main window
+- Connects Controllers with Views
 
-### Architecture
+#### **Controllers/**
+Business logic layer:
+- Handles user input from GUI
+- Processes security operations
+- Communicates between Models and Views
+- Implements core functionality
 
-The project follows a modular MVC-style architecture:
+#### **GUI/**
+Presentation layer:
+- Contains all visual components
+- User interface elements
+- Event handling
+- Display formatting
 
-#### **gen_main_app.py**
-- Main application controller
-- Manages GUI window and user interactions
-- Connects all components together
-- Handles display of input fields and output
-
-#### **gen_error.py**
-- Input validation and error checking
-- Displays warnings for invalid inputs
-- Ensures password generation requirements are met
-
-#### **gen_api.py**
-- Communicates with word dictionary API
-- Fetches random words based on user preferences
-- Handles API errors and retries
-
-#### **gen_creation.py**
-- Core password generation logic
-- Assembles words into secure passphrases
-- Adds numbers, symbols, and capitalization
-- Ensures password meets security standards
+#### **Models/**
+Data layer:
+- Defines data structures
+- Database interactions (if applicable)
+- Data validation
+- Business entity definitions
 
 ---
 
-## 🏗️ Project Structure
+## 🎯 Key Concepts
 
+### MVC Pattern in PySecure
+
+#### **Models** (Data)
+```python
+# Example Model structure
+class SecurityItem:
+    def __init__(self, name, value):
+        self.name = name
+        self.value = value
+    
+    def validate(self):
+        # Validation logic
+        pass
 ```
-PassPhraser/
-├── src/
-│   ├── gen_main_app.py    # Main application & GUI
-│   ├── gen_error.py       # Input validation
-│   ├── gen_api.py         # API communication
-│   └── gen_creation.py    # Password generation logic
-├── assets/                # GUI assets (if any)
-├── .gitignore
-└── README.md
+
+#### **Views** (GUI)
+```python
+# Example View component
+class MainWindow:
+    def __init__(self):
+        self.setup_ui()
+    
+    def setup_ui(self):
+        # GUI initialization
+        pass
+    
+    def update_display(self, data):
+        # Update interface with data
+        pass
+```
+
+#### **Controllers** (Logic)
+```python
+# Example Controller
+class SecurityController:
+    def __init__(self, model, view):
+        self.model = model
+        self.view = view
+    
+    def handle_action(self, action):
+        # Process user action
+        data = self.model.get_data()
+        self.view.update_display(data)
+```
+
+---
+
+## 🛠️ Extending PySecure
+
+### Adding New Features
+
+1. **Create a Model** (if new data structure needed):
+```python
+# In Models/
+class NewSecurityFeature:
+    def __init__(self, params):
+        # Initialize data structure
+        pass
+```
+
+2. **Create a Controller**:
+```python
+# In Controllers/
+class NewFeatureController:
+    def __init__(self, model, view):
+        self.model = model
+        self.view = view
+    
+    def process_action(self):
+        # Implementation
+        pass
+```
+
+3. **Create GUI Components**:
+```python
+# In GUI/
+class NewFeatureWindow:
+    def __init__(self):
+        self.setup_interface()
+```
+
+4. **Wire Everything Together** in `main.py`:
+```python
+# Initialize components
+model = NewSecurityFeature()
+view = NewFeatureWindow()
+controller = NewFeatureController(model, view)
 ```
 
 ---
 
 ## 🔒 Security Considerations
 
-### Password Strength
+Since this is a security-focused application, consider:
 
-PassPhraser generates strong passwords by:
-- Using random word selection from large dictionaries
-- Adding optional numbers and symbols
-- Capitalizing words for increased complexity
-- Ensuring sufficient entropy through word count
-
-### Example Entropy Calculation
-
-For a 4-word passphrase from a 10,000-word dictionary:
-- Entropy = log₂(10,000⁴) ≈ **53 bits**
-- With numbers and symbols: **~60+ bits**
-
-This is comparable to an 8-character random password and much more memorable!
-
----
-
-## ⚙️ Configuration
-
-### Customization Options
-
-You can modify the generator by editing configuration values:
-
-```python
-# In gen_creation.py
-MIN_PASSWORD_LENGTH = 3    # Minimum number of words
-MAX_PASSWORD_LENGTH = 8    # Maximum number of words
-WORD_SEPARATOR = "-"       # Character between words
-```
-
-### Using Different Word Sources
-
-Update the API endpoint in `gen_api.py`:
-
-```python
-API_URL = "https://your-word-api.com/random"
-```
+- **Input Validation**: Always validate user input in Controllers
+- **Data Sanitization**: Clean data before processing
+- **Secure Storage**: Use encryption for sensitive data
+- **Access Control**: Implement proper authentication if needed
+- **Logging**: Track security-related operations
+- **Error Handling**: Don't expose sensitive information in errors
 
 ---
 
 ## 🧪 Testing
 
-Run the application with various inputs:
+### Unit Testing
 
-```bash
-# Test minimum length
-python src/gen_main_app.py
+Create tests for each layer:
 
-# Test with maximum security
-python src/gen_main_app.py --length 8 --numbers --symbols
+```python
+# test_models.py
+import unittest
+from Models.security_model import SecurityModel
+
+class TestSecurityModel(unittest.TestCase):
+    def test_validation(self):
+        model = SecurityModel()
+        self.assertTrue(model.validate())
 ```
 
-### Test Cases
+### Running Tests
 
-- ✅ Valid inputs (length 3-8)
-- ✅ Invalid inputs (length < 3, length > 8)
-- ✅ API failure handling
-- ✅ Special character insertion
-- ✅ Clipboard functionality
+```bash
+python -m unittest discover tests/
+```
+
+---
+
+## 📚 Technologies & Tools
+
+- **Python**: Core programming language
+- **GUI Framework**: [Specify framework - tkinter, PyQt, etc.]
+- **IDE**: PyCharm (based on .idea directory)
+- **Version Control**: Git
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Here are some ideas:
+Contributions are welcome! Here's how you can help:
 
-### Potential Improvements
+### Areas for Improvement
 
-- [ ] Add password strength meter
-- [ ] Support for multiple languages
-- [ ] Save password history (encrypted)
-- [ ] Dark mode theme
-- [ ] Export passwords to password managers
-- [ ] Phonetic spelling output
-- [ ] Configurable word sources
-- [ ] Browser extension version
+- [ ] Add comprehensive documentation
+- [ ] Implement unit tests
+- [ ] Add more security features
+- [ ] Improve UI/UX design
+- [ ] Add configuration file support
+- [ ] Implement logging system
+- [ ] Add database support
+- [ ] Create user authentication
 
-### How to Contribute
+### Contribution Process
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
----
-
-## 📝 Development Notes
-
-### Project Context
-
-This project was developed as a two-week project for CS 10 (2022 high school course), demonstrating:
-- Python programming fundamentals
-- API integration
-- GUI development with Pyglet
-- Software architecture principles
-- Error handling and validation
+2. Create a feature branch (`git checkout -b feature/NewFeature`)
+3. Make your changes following the MVC pattern
+4. Write tests for new functionality
+5. Commit your changes (`git commit -m 'Add NewFeature'`)
+6. Push to the branch (`git push origin feature/NewFeature`)
+7. Open a Pull Request
 
 ---
 
@@ -314,63 +352,115 @@ This project was developed as a two-week project for CS 10 (2022 high school cou
 
 ### Common Issues
 
-**API Connection Errors**
+**Import Errors**
 ```bash
-# Check internet connection
-# Verify API endpoint is accessible
+# Make sure you're in the correct directory
+cd PySecure
+python main.py
 ```
 
-**Pyglet Installation Issues**
+**Missing Dependencies**
 ```bash
-# Try upgrading pip first
+# Update pip and reinstall
 pip install --upgrade pip
-pip install pyglet==1.5.26
+pip install -r requirements.txt
 ```
 
-**Module Not Found Errors**
+**GUI Not Showing**
 ```bash
-# Ensure you're in the correct directory
-cd PassPhraser
-python -m src.gen_main_app
+# Check GUI framework installation
+pip install [gui-framework-name]
+```
+
+---
+
+## 📖 Documentation
+
+### For Developers
+
+- Follow PEP 8 style guidelines
+- Use type hints where applicable
+- Document complex functions with docstrings
+- Keep Controllers thin, Models fat
+- GUI should only handle presentation
+
+### Code Style Example
+
+```python
+from typing import Optional, List
+
+class SecurityController:
+    """
+    Controller for managing security operations.
+    
+    Attributes:
+        model: The data model instance
+        view: The GUI view instance
+    """
+    
+    def __init__(self, model: SecurityModel, view: SecurityView) -> None:
+        """Initialize the controller with model and view."""
+        self.model = model
+        self.view = view
+    
+    def process_data(self, data: List[str]) -> Optional[bool]:
+        """
+        Process security data.
+        
+        Args:
+            data: List of data items to process
+            
+        Returns:
+            True if successful, None otherwise
+        """
+        # Implementation
+        pass
 ```
 
 ---
 
 ## 📄 License
 
-This project is **open source** and free to use by anyone. Feel free to modify, distribute, and use it in your own projects!
+This project is open source and available for anyone to use, modify, and distribute.
 
 ---
 
 ## 👨‍💻 Author
 
-**Dilshaan Sandhu**
+**Dilshan Sankalpana**
 
 - GitHub: [@Dilsan15](https://github.com/Dilsan15)
-- Project Link: [https://github.com/Dilsan15/PassPhraser](https://github.com/Dilsan15/PassPhraser)
+- Project Link: [https://github.com/Dilsan15/PySecure](https://github.com/Dilsan15/PySecure)
 
 ---
 
 ## 🙏 Acknowledgments
 
-- Word dictionary API providers
-- Pyglet library maintainers
-- The passphrase concept popularized by [XKCD #936](https://xkcd.com/936/)
-- CS 10 course for project inspiration
+- Python community for excellent libraries and tools
+- Contributors to MVC design patterns
+- Open-source security tools for inspiration
 
 ---
 
-## 📚 Resources
+## 📊 Project Status
 
-- [XKCD: Password Strength](https://xkcd.com/936/)
-- [Diceware Passphrases](https://theworld.com/~reinhold/diceware.html)
-- [Pyglet Documentation](https://pyglet.readthedocs.io/)
+This project is in active development. Check the [Issues](https://github.com/Dilsan15/PySecure/issues) page for planned features and known bugs.
+
+---
+
+## 📞 Support
+
+If you have questions or need help:
+
+- Open an [Issue](https://github.com/Dilsan15/PySecure/issues)
+- Check existing documentation
+- Review the code examples above
 
 ---
 
 <div align="center">
 
-**Secure passwords don't have to be impossible to remember!**
+**Building secure applications, one commit at a time.**
 
 ⭐ Star this repo if you find it useful!
 
